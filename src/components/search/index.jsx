@@ -1,31 +1,20 @@
 // import api from "../../../api/index";
+import axios from 'axios';
 import { useState } from "react";
 import { IMaskInput } from "react-imask";
 
 function Search() {
-    const [Userdata, setUserdata] = useState({});
+    const [cep, setCep] = useState('');
+    const [dadosCep, setDadosCep] = useState(null);
 
-    //   const HandleLogin = async () => {
-    //     try {
-    //       const resp = await api({
-    //         method: "POST",
-    //         url: "/login",
-    //         data: {
-    //           name: String(Userdata?.name),
-    //           //   senha: Userdata?.senha,
-    //         },
-    //         headers: {
-    //           "Content-Type": "application/json",
-    //         },
-    //         json: true,
-    //       });
-    //       alert("Login feito com sucesso!");
-    //       console.log({ Userdata });
-    //     } catch (e) {
-    //       alert("Error: Usuário não cadastrado!");
-    //       console.error(e);
-    //     }
-    //   };
+    const consultarCep = async () => {
+        try {
+            const response = await axios.get(`http://localhost:8000/consulta/${cep}`);
+            setDadosCep(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     return (
         <>
@@ -53,14 +42,12 @@ function Search() {
                         </label>
                         <div className="mt-2">
                             <IMaskInput
-                                mask="00.000-000"
+                                // mask="00.000-000"
                                 placeholder="Digite o seu CPF"
                                 id="cep"
                                 name="cep"
                                 type="text"
-                                onChange={(e) => {
-                                    setUserdata({ ...Userdata, name: e.target.value });
-                                }}
+                                value={cep} onChange={(e) => setCep(e.target.value)}
                                 autoComplete="email"
                                 required
                                 className=" px-4 block w-full rounded-md border-0 py-1.5 text-slate-600 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -69,7 +56,7 @@ function Search() {
                     </div>
                     <div>
                         <button
-                            //   onClick={HandleLogin}
+                            onClick={consultarCep}
                             className=" mt-5 flex w-full justify-center rounded-md bg-indigo-950 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                         >
                             Pesquisar
@@ -86,6 +73,17 @@ function Search() {
                             Atendimento Credmei !
                         </a>
                     </p>
+                    <div>
+                        {cep}
+                        {dadosCep && (
+                            <div>
+                                <p>CEP: {dadosCep.cep}</p>
+                                <p>Logradouro: {dadosCep.logradouro}</p>
+                                <p>Bairro: {dadosCep.bairro}</p>
+                                {/* Exiba outros dados do CEP conforme necessário */}
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
         </>
