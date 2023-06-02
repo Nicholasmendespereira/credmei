@@ -89,7 +89,7 @@ function Search() {
                 <p className="text-gray-500">Cidade: {dadosCep.city}</p>
                 <p className="text-gray-500">Bairro: {dadosCep.neighborhood}</p>
                 <p className="text-gray-500">Rua: {dadosCep.street}</p>
-                {/* Exiba outros dados do CEP conforme necessário */}
+                
               </div>
             )}
           </div>
