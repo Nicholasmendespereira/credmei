@@ -1,4 +1,3 @@
-// import api from "../../../api/index";
 import axios from "axios";
 import { IMaskInput } from "react-imask";
 import { Fragment, useRef, useState } from "react";
@@ -39,7 +38,6 @@ function Search() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          {/* <form className="space-y-6" action="#" method="POST"> */}
           <div>
             <label
               htmlFor="cep"
@@ -89,7 +87,7 @@ function Search() {
                 <p className="text-gray-500">Cidade: {dadosCep.city}</p>
                 <p className="text-gray-500">Bairro: {dadosCep.neighborhood}</p>
                 <p className="text-gray-500">Rua: {dadosCep.street}</p>
-                
+
               </div>
             )}
           </div>
