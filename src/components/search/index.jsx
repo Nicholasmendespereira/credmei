@@ -14,8 +14,8 @@ function Search() {
 
   const consultarCep = async () => {
     try {
-      // const response = await axios.get(`http://localhost:8000/consulta/${cep}`);
-      // setDadosCep(response.data);
+      const response = await axios.get(`http://localhost:8000/consulta/${cep}`);
+      setDadosCep(response.data);
       setTimeout(() => {
         setOpen(true);
       }, "2000");
