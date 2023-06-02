@@ -3,19 +3,22 @@ import axios from "axios";
 import { IMaskInput } from "react-imask";
 import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { CheckBadgeIcon  } from "@heroicons/react/24/outline";
+import { CheckBadgeIcon } from "@heroicons/react/24/outline";
 
 
 function Search() {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const cancelButtonRef = useRef(null);
   const [cep, setCep] = useState("");
   const [dadosCep, setDadosCep] = useState(null);
 
   const consultarCep = async () => {
     try {
-      const response = await axios.get(`http://localhost:8000/consulta/${cep}`);
-      setDadosCep(response.data);
+      // const response = await axios.get(`http://localhost:8000/consulta/${cep}`);
+      // setDadosCep(response.data);
+      setTimeout(() => {
+        setOpen(true);
+      }, "2000");
     } catch (error) {
       console.error(error);
     }
@@ -126,7 +129,7 @@ function Search() {
                   <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                     <div className="sm:flex sm:items-start">
                       <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-green-100 sm:mx-0 sm:h-10 sm:w-10">
-                        <CheckBadgeIcon 
+                        <CheckBadgeIcon
                           className="h-6 w-6 text-green-500"
                           aria-hidden="true"
                         />
@@ -140,7 +143,7 @@ function Search() {
                         </Dialog.Title>
                         <div className="mt-2">
                           <p className="text-sm text-gray-500">
-                          Conheça melhor sobre-nós, será rapidinho
+                            Conheça melhor sobre-nós, será rapidinho
                           </p>
                         </div>
                       </div>
