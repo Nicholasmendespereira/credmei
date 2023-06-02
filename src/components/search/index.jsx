@@ -74,7 +74,6 @@ function Search() {
                         </a>
                     </p>
                     <div>
-                        {cep}
                         {dadosCep && (
                             <div>
                                 <p>CEP: {dadosCep.cep}</p>
