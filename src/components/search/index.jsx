@@ -79,7 +79,6 @@ function Search() {
             </a>
           </p>
           <div>
-            {console.log({ dadosCep })}
             {dadosCep && (
               <div>
                 <p className="text-gray-500">CEP: {dadosCep.cep}</p>
