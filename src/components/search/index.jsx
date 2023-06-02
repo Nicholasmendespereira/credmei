@@ -74,11 +74,14 @@ function Search() {
                         </a>
                     </p>
                     <div>
+                        {console.log({dadosCep})}
                         {dadosCep && (
                             <div>
-                                <p>CEP: {dadosCep.cep}</p>
-                                <p>Logradouro: {dadosCep.logradouro}</p>
-                                <p>Bairro: {dadosCep.bairro}</p>
+                                <p className='text-gray-500'>CEP: {' ' }{dadosCep.cep}</p>
+                                <p className='text-gray-500'>Estado: {' ' }{dadosCep.state}</p>
+                                <p className='text-gray-500'>Cidade:{ ' '}{dadosCep.city}</p>
+                                <p className='text-gray-500'>Bairro: {' ' }{dadosCep.neighborhood}</p>
+                                <p className='text-gray-500'>Rua:{ ' '} {dadosCep.street}</p>
                                 {/* Exiba outros dados do CEP conforme necessário */}
                             </div>
                         )}
